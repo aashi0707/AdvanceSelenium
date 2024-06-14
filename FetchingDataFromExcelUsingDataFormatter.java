@@ -9,6 +9,8 @@ import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class FetchingDataFromExcelUsingDataFormatter {
 
@@ -41,8 +43,15 @@ public class FetchingDataFromExcelUsingDataFormatter {
 		System.out.println(data.formatCellValue(cell4));
 		System.out.println(data.formatCellValue(cell5));
 		System.out.println(data.formatCellValue(cell6));
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		
+		String url = wb.getSheet("Sheet1").getRow(1).getCell(4).getStringCellValue();
+		driver.get(url);
 
 
 	}
+	
 
 }
